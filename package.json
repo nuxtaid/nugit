@@ -1,0 +1,69 @@
+{
+  "name": "@nuxtaid/nugit",
+  "type": "module",
+  "version": "1.0.0",
+  "private": false,
+  "packageManager": "pnpm@8.7.4",
+  "description": "Nuxt DevTools RPC Starter for creating DevTools module",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/arashsheyda",
+  "homepage": "https://github.com/nuxtaid/nugit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxtaid/nugit"
+  },
+  "bugs": {
+    "url": "https://github.com/nuxtaid/nugit/issues"
+  },
+  "keywords": [
+    "rpc",
+    "nuxt",
+    "module",
+    "starter",
+    "devtools"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "build": {
+    "externals": [
+      "ofetch"
+    ]
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "nuxt-module-build && npm run build:client",
+    "build:client": "nuxi generate client",
+    "dev": "nuxi dev playground",
+    "dev:prepare": "nuxt-module-build && nuxi prepare client",
+    "dev:client": "nuxi dev client --port 3300",
+    "dev:prod": "npm run build && npm run dev",
+    "release": "npm run lint && npm run build && changelogen --release && npm publish",
+    "lint": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/devtools-kit": "^1.6.0",
+    "@nuxt/devtools-ui-kit": "^1.6.0",
+    "@nuxt/kit": "^3.13.2",
+    "@vueuse/core": "^11.2.0",
+    "defu": "^6.1.4",
+    "pathe": "^1.1.2",
+    "simple-git": "^3.27.0",
+    "sirv": "^3.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.8.0",
+    "@nuxt/module-builder": "^0.8.4",
+    "changelogen": "^0.5.7",
+    "eslint": "9.13.0",
+    "nuxt": "^3.13.2"
+  }
+}
