@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '@nuxt/eslint',
     '../src/module',
     defineNuxtModule({
       setup(_, nuxt) {
