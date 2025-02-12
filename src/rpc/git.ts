@@ -12,11 +12,16 @@ export function setupGitRPC({ nuxt }: DevtoolsServerContext): any {
  }
 
   const git: SimpleGit = simpleGit(options)
+
   git.cwd({
     path: nuxt.options.rootDir,
     root: true,
   })
 
   return {
+    gitStatus()
+    {
+      return git.status();
+    },
   } satisfies Partial<ServerFunctions>
 }
